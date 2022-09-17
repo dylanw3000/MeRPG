@@ -8,8 +8,23 @@ enum inputType {
 	none
 }
 
+enum gameState {
+	setup,
+	betweenTurn,
+	playerTurn,
+	enemyTurn
+}
+state = gameState.setup;
+enum turnState {
+	buttons,
+	select,
+	moving
+}
+substate = nil;
+playerButtons = ds_list_create();
+
 globalvar inputAllowed;
-inputAllowed = inputType.freeSelect;
+inputAllowed = inputType.none;
 
 globalvar activeTile;
 activeTile = nil;
@@ -18,11 +33,14 @@ globalvar hoverTile;
 hoverTile = nil;
 
 
+initiativeList = ds_list_create();
+initiativeCount = nil;
+
 gridHeight = 16;
 gridWidth = 20;
 
 gridOffsetX = 50;
-gridOffsetY = 50;
+gridOffsetY = 120;
 
 tileSize = 60;
 
@@ -69,10 +87,11 @@ gridData[4][4].setWall();
 gridData[3][5].setWall();
 gridData[3][6].setWall();
 
-gridData[6][7].setUnit(oWarrior);
-// gridData[6][9].setUnit(oActor);
-gridData[15][9].setUnit(oGoblin);
+ds_list_add(initiativeList, gridData[6][7].setUnit(oWarrior));
+ds_list_add(initiativeList, gridData[15][9].setUnit(oGoblin));
 
+/*
 activeTile = gridData[6][7];
 activeTile.moveTargeting(4);
 inputAllowed = inputType.move;
+*/

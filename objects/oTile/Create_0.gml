@@ -88,4 +88,5 @@ function setUnit(_unitType){
 	var _unit = instance_create_depth(x,y, -y, _unitType);
 	unit = _unit;
 	_unit.tile = id;
+	return _unit;
 }

@@ -28,4 +28,13 @@ if(mouse_check_button_released(mb_left)){
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_color(c_white);
-draw_text(x,y, text);
+if(type == buttonType.text){
+	draw_text(x,y, text);
+}
+else if(type == buttonType.textImage){
+	if(image != nil){
+		draw_sprite(image, 1, x-w/2, y);
+		// draw_sprite_general(image, 0, 0,0, sprite_width,sprite_height, x-w/2,y, 1,1, 0, c_white,c_white,c_white,c_white, 1);
+	}
+	draw_text(x+w/2,y, text);
+}
