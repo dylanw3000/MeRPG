@@ -15,3 +15,10 @@ triggered = false;
 midclick = false;
 
 image = nil;
+
+action = nil;
+
+enum buttonAction {
+	stride,
+	strike
+}

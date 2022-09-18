@@ -1,6 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+globalvar gridCtrl;
+gridCtrl = id;
+
 enum inputType {
 	freeSelect,
 	move,
@@ -28,6 +31,9 @@ inputAllowed = inputType.none;
 
 globalvar activeTile;
 activeTile = nil;
+
+globalvar activeUnit;
+activeUnit = nil;
 
 globalvar hoverTile;
 hoverTile = nil;

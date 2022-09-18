@@ -1,6 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if(dist == nil){return;}
+
+switch(inputAllowed){
+	case inputType.move:
+		activeUnit.actorMove(id);
+		break;
+	case nil:
+}
+
 /*
 if(inputAllowed == inputType.freeSelect){
 	inputAllowed = inputType.targeting;

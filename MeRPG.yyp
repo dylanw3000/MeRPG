@@ -6,6 +6,7 @@
     {"id":{"name":"oTile","path":"objects/oTile/oTile.yy",},"order":1,},
     {"id":{"name":"sError","path":"sprites/sError/sError.yy",},"order":4,},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},"order":1,},
+    {"id":{"name":"buttonTrigger","path":"scripts/buttonTrigger/buttonTrigger.yy",},"order":1,},
     {"id":{"name":"buttonMakingScript","path":"scripts/buttonMakingScript/buttonMakingScript.yy",},"order":0,},
     {"id":{"name":"oWarrior","path":"objects/oWarrior/oWarrior.yy",},"order":0,},
     {"id":{"name":"oActor","path":"objects/oActor/oActor.yy",},"order":0,},
