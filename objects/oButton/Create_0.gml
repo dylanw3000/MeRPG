@@ -12,6 +12,7 @@ text = "NULL";
 type = nil;
 
 triggered = false;
+triggerKey = nil;
 midclick = false;
 
 image = nil;

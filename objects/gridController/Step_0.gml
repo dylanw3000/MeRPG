@@ -1,13 +1,28 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if(substate == turnState.afterAction){
+	substate = nil;
+	activeUnit.actions--;
+	if(activeUnit.actions <= 0){
+		state = gameState.betweenTurn;
+		initiativeCount++;
+		if(initiativeCount >= ds_list_size(initiativeList)){
+			initiativeCount = 0;
+		}
+	}
+}
+
 var _unit;
 switch(state){
 	case gameState.setup:
 		initiativeCount = 0;
+	case gameState.betweenTurn:
 		_unit = ds_list_find_value(initiativeList, initiativeCount);
 		activeTile = _unit.tile;
 		activeUnit = _unit;
+		_unit.actions = _unit.totalActions;
+		
 		if(object_get_parent(_unit.object_index) == oPlayer){
 			state = gameState.playerTurn;
 		}
@@ -22,11 +37,19 @@ switch(state){
 	case gameState.playerTurn:
 		switch(substate){
 			case nil:
-				var _button = makeTextButton(room_width-70,50, 60,20, "Stride");
-				_button.action = buttonAction.stride;
-				ds_list_add(playerButtons, _button);
-				substate = turnState.buttons;
+				if(ds_list_size(activeUnit.actionButtons) == 0){
+					makeTextButton(room_width/2,room_height/2, 60,20, "NO ACTIONS ASSIGNED TO ACTIVE UNIT")
+				}
 				
+				for(var i=0; i<ds_list_size(activeUnit.actionButtons); i++){
+					var _actionInfo = ds_list_find_value(activeUnit.actionButtons, i);
+					var _button = makeTextButton(room_width-70,50 + 50*i, 60,20, _actionInfo[0]);
+					_button.action = _actionInfo[1];
+					ds_list_add(playerButtons, _button);
+				}
+				
+				substate = turnState.buttons;
+				break;
 			case turnState.buttons:
 				for(var i=0; i<ds_list_size(playerButtons); i++){
 					var _button = ds_list_find_value(playerButtons, i);

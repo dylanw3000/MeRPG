@@ -18,7 +18,9 @@ enum gameState {
 	enemyTurn
 }
 state = gameState.setup;
+
 enum turnState {
+	afterAction,
 	buttons,
 	select,
 	moving

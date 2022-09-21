@@ -13,7 +13,7 @@ group = nil;
 image_xscale = 0.75;
 image_yscale = 0.75;
 
-unit = ds_list_create();
+units = ds_list_create();
 terrain = false;
 
 path_prev = nil;
@@ -86,7 +86,7 @@ function setWall(){
 
 function setUnit(_unitType){
 	var _unit = instance_create_depth(x,y, -y, _unitType);
-	ds_list_add(unit, _unit);
+	ds_list_add(units, _unit);
 	// unit = _unit;
 	_unit.tile = id;
 	return _unit;
