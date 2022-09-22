@@ -35,6 +35,12 @@ switch(state){
 		}
 		break;
 	case gameState.playerTurn:
+		if(mouse_check_button_pressed(mb_right)) {
+			activeTile.tileClear();
+			inputAllowed = inputType.none;
+			substate = nil;
+		}
+
 		switch(substate){
 			case nil:
 				if(ds_list_size(activeUnit.actionButtons) == 0){
@@ -45,6 +51,7 @@ switch(state){
 					var _actionInfo = ds_list_find_value(activeUnit.actionButtons, i);
 					var _button = makeTextButton(room_width-70,50 + 50*i, 60,20, _actionInfo[0]);
 					_button.action = _actionInfo[1];
+					_button.triggerKey = ord(chr(i+49));
 					ds_list_add(playerButtons, _button);
 				}
 				
