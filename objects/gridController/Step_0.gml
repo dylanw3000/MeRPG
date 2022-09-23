@@ -4,6 +4,8 @@
 if(substate == turnState.afterAction){
 	substate = nil;
 	activeUnit.actions--;
+	activeTile.tileClear();
+	inputAllowed = inputType.none;
 	if(activeUnit.actions <= 0){
 		state = gameState.betweenTurn;
 		initiativeCount++;
@@ -75,5 +77,9 @@ switch(state){
 				}
 				break;
 		}
+		break;
+	case gameState.enemyTurn:
+		activeUnit.enemyBehavior();
+		// substate = turnState.afterAction;
 		break;
 }

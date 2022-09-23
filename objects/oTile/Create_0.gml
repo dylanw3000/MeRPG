@@ -27,6 +27,7 @@ function tileClear(){
 }
 
 function moveTargeting(range){
+	var moveBreakdown = range + cost;
 	dist = range;
 	var neighborPath = [nil,nil,nil,nil,nil,nil];
 	
@@ -39,6 +40,7 @@ function moveTargeting(range){
 			neighborPath[i] = 1;
 			// tile.color = c_aqua;
 			tile.path_prev = id;
+			if(tile.dist > moveBreakdown) return;
 		}
 	}
 	
@@ -46,6 +48,31 @@ function moveTargeting(range){
 		if(neighborPath[i] != nil){
 			with(neighbors[i]){
 				moveTargeting(dist);
+			}
+		}
+	}
+}
+
+function enemyMoveTargeting(){
+	var moveBreakdown = dist - cost;
+	var neighborPath = [nil,nil,nil,nil,nil,nil];
+	
+	for(var i=0; i<6; i++){
+		var tile = neighbors[i];
+		if(tile == nil) { continue; }
+		
+		if(tile.dist == nil || tile.dist > dist+tile.cost){
+			tile.dist = dist+tile.cost;
+			neighborPath[i] = 1;
+			tile.path_prev = id;
+			if(tile.dist < moveBreakdown) return;
+		}
+	}
+	
+	for(var i=0; i<6; i++){
+		if(neighborPath[i] != nil){
+			with(neighbors[i]){
+				enemyMoveTargeting(dist);
 			}
 		}
 	}
