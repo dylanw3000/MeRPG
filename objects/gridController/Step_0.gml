@@ -46,7 +46,7 @@ switch(state){
 		switch(substate){
 			case nil:
 				if(ds_list_size(activeUnit.actionButtons) == 0){
-					makeTextButton(room_width/2,room_height/2, 60,20, "NO ACTIONS ASSIGNED TO ACTIVE UNIT")
+					makeTextButton(room_width/2,room_height/2, 60,20, "NO ACTIONS ASSIGNED\nTO ACTIVE UNIT")
 				}
 				
 				for(var i=0; i<ds_list_size(activeUnit.actionButtons); i++){

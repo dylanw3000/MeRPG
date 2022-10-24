@@ -13,4 +13,9 @@ switch(terrain){
 if(debug){
 	draw_set_color(c_black);
 	draw_text(x,y, dist);
+	
+	if(ds_list_size(units) > 0){
+		draw_set_color(c_green);
+		draw_text(x,y+20, ds_list_size(units));
+	}
 }

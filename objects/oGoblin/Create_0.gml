@@ -7,11 +7,14 @@ hp_max = 2;
 hp = hp_max;
 
 function enemyBehavior() {
+	if(path_index) return;
+	
 	activeTile.dist = 0;
 	activeTile.enemyMoveTargeting();
 	
 	var targetPlayer = nil;
 	for(var i=0; i<instance_number(oPlayer); i++){
+		// change when there are multiple players
 		targetPlayer = instance_find(oPlayer, i);
 		break;
 	}
@@ -22,10 +25,19 @@ function enemyBehavior() {
 	}
 	
 	var targetTile = targetPlayer.tile.path_prev;
+	// while(targetTile.dist > move * actions){
 	while(targetTile.dist > move){
+		// need to find a way to path around all sides of the player
 		targetTile = targetTile.path_prev;
 	}
+	/*
+	while(targetTile.dist > move){
+		actions--;
+		targetTile.dist -= move;
+	}
+	*/
 	
+	/*
 	for(var i=0; i<ds_list_size(activeTile.units); i++){
 		if(ds_list_find_value(activeTile.units, i) == id){
 			ds_list_delete(activeTile.units, i);
@@ -39,4 +51,7 @@ function enemyBehavior() {
 	x = tile.x; y = tile.y;
 	
 	gridCtrl.substate = turnState.afterAction;
+	*/
+	
+	actorMove(targetTile);
 }
