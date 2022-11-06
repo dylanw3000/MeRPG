@@ -3,7 +3,7 @@
 
 depth = -room_height;
 
-if(hoverTile != nil && hoverTile.path_prev != nil){
+if(hoverTile != nil && hoverTile.path_prev != nil && state != gameState.enemyTurn){
 	var currentTile = hoverTile;
 	var nextTile = hoverTile.path_prev;
 	draw_set_color(c_yellow);

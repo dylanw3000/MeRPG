@@ -11,8 +11,10 @@ switch(terrain){
 */
 
 if(debug){
-	draw_set_color(c_black);
-	draw_text(x,y, dist);
+	if(dist != nil){
+		draw_set_color(c_black);
+		draw_text(x,y, dist);
+	}
 	
 	if(ds_list_size(units) > 0){
 		draw_set_color(c_green);

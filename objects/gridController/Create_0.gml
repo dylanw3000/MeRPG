@@ -7,7 +7,7 @@ gridCtrl = id;
 enum inputType {
 	freeSelect,
 	move,
-	targeting,
+	target,
 	none
 }
 
@@ -57,7 +57,9 @@ for(var j=0; j<gridHeight; j++){
 	for(var i=0; i<gridWidth; i++){
 		// draw_circle(i*tileSize + (j%2 * tileSize/2), j*tileSize, tileSize/2, false);
 		// multiply y by .66 once tiles are actually added
-		gridData[i,j] = instance_create_depth(i*tileSize + (j%2 * tileSize/2) + gridOffsetX, j*tileSize*.66 + gridOffsetY, 0, oTile);
+		gridData[i][j] = instance_create_depth(i*tileSize + (j%2 * tileSize/2) + gridOffsetX, j*tileSize*.66 + gridOffsetY, 0, oTile);
+		gridData[i][j].gridx = i;
+		gridData[i][j].gridy = j;
 	}
 }
 

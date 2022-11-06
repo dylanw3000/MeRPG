@@ -8,6 +8,11 @@ function buttonTrigger(_button){
 			inputAllowed = inputType.move;
 			break;
 		case buttonAction.strike:
+			substate = turnState.select;
+			activeTile.freeTargeting(1);
+			inputAllowed = inputType.target;
+			// substate = turnState.afterAction;
+			break;
 		default:
 	}
 }

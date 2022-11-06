@@ -5,6 +5,9 @@
 neighbors = [nil, nil, nil, nil, nil, nil];
 // hovered = false;
 
+gridx = nil;
+gridy = nil;
+
 cost = 1;
 dist = nil;
 
@@ -72,7 +75,46 @@ function enemyMoveTargeting(){
 	for(var i=0; i<6; i++){
 		if(neighborPath[i] != nil){
 			with(neighbors[i]){
-				enemyMoveTargeting(dist);
+				enemyMoveTargeting();
+			}
+		}
+	}
+}
+
+function freeTargeting(range){
+	//
+	// gridCtrl.gridData[0][5].y += 100;
+	// activeTile.dist = 1;
+	for(var i=0; i<gridCtrl.gridWidth; i++){
+		for(var j=0; j<gridCtrl.gridHeight; j++){
+			if(j%2 == activeTile.gridy%2){
+				if(abs(j-activeTile.gridy) <= range){
+					if(abs(i-activeTile.gridx) + (abs(j-activeTile.gridy) / 2) <= range){
+						gridCtrl.gridData[i][j].dist = 1;
+					}
+				}
+			}
+			else{
+				if(abs(j-activeTile.gridy) <= range){
+					if(abs(i-activeTile.gridx) + (abs(j-activeTile.gridy) / 2) <= range){
+						gridCtrl.gridData[i][j].dist = 1;
+					}
+					// if((activeTile.gridy%2 && i > activeTile.gridx) || (!activeTile.gridy%2 && i < activeTile.gridx)){}
+					if(activeTile.gridy%2 == 0){
+						if(i < activeTile.gridx){
+							if(activeTile.gridx-i-1 + (abs(j-activeTile.gridy) / 2) <= range){
+								gridCtrl.gridData[i][j].dist = 1;
+							}
+						}
+					}
+					else{
+						if(i > activeTile.gridx){
+							if(i-1 - activeTile.gridx + (abs(j-activeTile.gridy) / 2) <= range){
+								gridCtrl.gridData[i][j].dist = 1;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
