@@ -14,7 +14,7 @@ if(gridCtrl.state != gameState.enemyTurn){
 	if(activeTile == id){
 		image_blend = c_blue;
 	}
-	if(hoverTile == id && (inputAllowed == inputType.freeSelect || inputAllowed == inputType.move)){
+	if(hoverTile == id && (inputAllowed == inputType.target || inputAllowed == inputType.move)){
 		image_blend = c_gray;
 	}
 }

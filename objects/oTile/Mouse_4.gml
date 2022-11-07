@@ -7,6 +7,8 @@ switch(inputAllowed){
 	case inputType.move:
 		activeUnit.actorMove(id);
 		break;
+	case inputType.target:
+		activeUnit.actorAttack(id);
 	case nil:
 }
 

@@ -18,6 +18,7 @@ midclick = false;
 image = nil;
 
 action = nil;
+actionAmount = nil;
 
 enum buttonAction {
 	stride,

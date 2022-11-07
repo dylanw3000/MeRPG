@@ -9,7 +9,7 @@ function buttonTrigger(_button){
 			break;
 		case buttonAction.strike:
 			substate = turnState.select;
-			activeTile.freeTargeting(1);
+			activeTile.freeTargeting(_button.actionAmount);
 			inputAllowed = inputType.target;
 			// substate = turnState.afterAction;
 			break;

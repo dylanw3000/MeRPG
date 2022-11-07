@@ -59,3 +59,14 @@ function actorMove(_target){
 	gridCtrl.substate = turnState.afterAction;
 	inputAllowed = inputType.none;
 }
+
+function actorAttack(_targetTile){
+	if(ds_list_size(_targetTile.units) == 0) { return; }
+	
+	for(var i=0; i<ds_list_size(_targetTile.units); i++){
+		var _unit = ds_list_find_value(_targetTile.units, i);
+		_unit.hp -= 1;
+	}
+	gridCtrl.substate = turnState.afterAction;
+	inputAllowed = inputType.none;
+}
